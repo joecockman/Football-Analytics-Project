@@ -79,3 +79,30 @@ CREATE TABLE Stats (
 
 Once I created the tables I generated the schema, seen below:
 
+![Schema Preview](Sports-Analytics-Schema.png)
+
+## Top Scoring Teams
+
+```
+#Top Scoring Teams
+select teams.team_name AS Team,  SUM(stats.goals) AS Total_Goals 
+from teams
+join players
+on teams.team_id = players.team_id
+join stats
+on players.player_id = stats.player_id
+group by team_name
+order by SUM(stats.goals) desc;
+```
+
+## Goals by Age
+
+```
+# Goals by Age
+SELECT first_name, last_name, TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) AS age, stats.goals
+FROM players
+join stats
+on players.player_id = stats.player_id
+order by goals desc;
+```
+
