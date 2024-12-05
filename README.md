@@ -287,7 +287,27 @@ on players.player_id = stats.player_id
 order by stats.goals desc
 limit 10;
 ```
+For this code I joined the players, teams and stats table to create the results table. I included the players age by using TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) as only their birth date was given in the table. This function takes the year from their birth date and compares it with the current year, 2024, with the difference being the age of the player. I also limited this list to 10 to see only the top 10 goalscorers across this marvellous season.
 
+![Top Goalscorers](Screenshots/Top-Goalscorers.png)
+
+What a season it was for 62 year old Mary Williams! 41 goals over 38 games is an unbelievable strike rate and is made all the more impressive by the fact she's a goalkeeper. Her goalscoring heroics this season for Smith-McBride FC see her share the golden boot with Mccoy, Turner and Montgomery FC's 39 year old forward, Jill Schmidt, and Olsen-Graham FCs 20 year old up and coming striker, David Bradley.
+
+## ELFL Top Assists 2023/2024
+```
+# Top Assists
+select players.first_name, players.last_name, TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) AS age, players.position, 
+teams.team_name, 
+stats.assists
+from players
+join teams
+on players.team_id = teams.team_id
+join stats
+on players.player_id = stats.player_id
+order by stats.assists desc
+limit 10;
+```
+Modifying the goalscorers code just slightly allows us to see who our top assist makers were this season.
 
 ## Top Scoring Teams
 
