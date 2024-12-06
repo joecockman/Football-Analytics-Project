@@ -501,6 +501,8 @@ Gonzalez, Nguyen and Welch FC finished 1 point ahead of Murphy-Frost FC to seal 
 
 Meanwhile it was relegation heartbreak for Coleman, Jarvis and Oconnor FC, Allen-Gonzalez FC, and Olsen-Graham FC, who will all be playing their football in the Law Firm Championship next season.
 
+![ELFL Season Review](Screenshots/ELFL-Season-Review.png)
+
 
 
 
