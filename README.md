@@ -1,6 +1,6 @@
 # Football-Analytics-Project
 
-![ELFL League Banner](Screenshots/ELFL-Banner.png)
+![ELFL League Banner](Screenshots/ELFL-Banner-2.png)
 
 The purpose of this project was to practice and to showcase my knowledge of SQL. I created a database named Sports Analytics and used Python Faker to populate the tables with fake data. the python code (team_name = faker.company() + " FC") generated team names using company names and adding FC to the end of them. The end result of this name generation was 20 teams who sounded like they were law firms, and thus the ELFL (English Law Firms League) was born.
 
