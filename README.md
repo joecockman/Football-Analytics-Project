@@ -502,11 +502,6 @@ Gonzalez, Nguyen and Welch FC finished 1 point ahead of Murphy-Frost FC to seal 
 Meanwhile it was relegation heartbreak for Coleman, Jarvis and Oconnor FC, Allen-Gonzalez FC, and Olsen-Graham FC, who will all be playing their football in the Law Firm Championship next season.
 
 
-04/12/2023 - 02/12/2024
-
-20/11/2024 - 2-1 Morris-Perez
-24/08/2024 - 5-0 Brown massey
-
 
 
 
