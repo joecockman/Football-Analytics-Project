@@ -481,6 +481,32 @@ Finally I grouped this by team_id and ordered by wins to get the final results.
 
 ![Final Results](Screenshots/Final-Results.png)
 
+This table gave me the total wins, draws and losses for each team. I then used this to calculate the points and put the result into the final polished table that you see below.
+
+![Final Results](Screenshots/league-table.png)
+
+So what a season it was for Morris-Perez FC,seeing off Brown, Massey and Kelly FC by just 2 points to win the title. With such fine margins, I did a check to see what happened in the 2 games between our final top 2 using the code below:
+
+```
+select * from teams
+join matches
+on teams.team_id = matches.home_team_id
+where home_team_id = 18 AND away_team_id = 20;
+```
+I used this code to find the match_id for when these two played each other, and then swapped the numbers around to get the reverse fixture.
+
+2nd place Brown, Massey and Kelley FC secured a resounding 5-0 win in their home game against the eventual champions, but a 2-1 loss in the reverse fixture at Morris-Perez's fortress of a stadium, New Bryanmouth, may just be the result that decided the league. Delving deeper into the data, I can also see that this massive result was one of the final games of the season. The 23/24 season ran from 04/12/2023 - 02/12/2024 (giving players just a 2 day break inbetween seasons) and the 2-1 epic between these two took place on 20/11/2024. High Drama.
+
+Gonzalez, Nguyen and Welch FC finished 1 point ahead of Murphy-Frost FC to seal 4th spot and the final Champions League position.
+
+Meanwhile it was relegation heartbreak for Coleman, Jarvis and Oconnor FC, Allen-Gonzalez FC, and Olsen-Graham FC, who will all be playing their football in the Law Firm Championship next season.
+
+
+04/12/2023 - 02/12/2024
+
+20/11/2024 - 2-1 Morris-Perez
+24/08/2024 - 5-0 Brown massey
+
 
 
 
