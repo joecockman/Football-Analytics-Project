@@ -1,12 +1,16 @@
-# Football-Analytics-Project
+# Football Analytics Project
 
 ![ELFL League Banner](Screenshots/ELFL-Banner-2.png)
 
-The purpose of this project was to practice and to showcase my knowledge of SQL. I created a database named Sports Analytics and used Python Faker to populate the tables with fake data. the python code (team_name = faker.company() + " FC") generated team names using company names and adding FC to the end of them. The end result of this name generation was 20 teams who sounded like they were law firms, and thus the ELFL (English Law Firms League) was born.
+## The English Law Firms League 
 
-# Creating the database
+The main purpose of this project was to practice and to showcase my knowledge of SQL. I created a database named Sports Analytics and used Python Faker to populate the tables with fake data. the python code (team_name = faker.company() + " FC") generated team names using company names and adding FC to the end of them. The end result of this name generation was 20 teams who sounded like they were law firms, and thus the ELFL (English Law Firms League) was born.
 
-I began by creating my database named 'Sports Analytics 2'(Sports Analytics 1 was a failed practice attempt). I created 5 tables in this database, listed below:
+I used SQL to delve deep into the data and see what action took place in the 2023/2024 ELFL season, before finally presenting this data using Excel. Below I have documented every step I took in completing this project.
+
+## Creating the database
+
+I began by creating my database named 'Sports Analytics 2' (Sports Analytics 1 was a failed practice attempt). I created 5 tables in this database, listed below:
 
  - Players
  - Matches
@@ -117,9 +121,9 @@ stddev_red_cards = 2
 ```
 In this first part of the code I import the faker library and then set up the distribution parameters for the stats from the stats table. This was something I initially had some trouble with.
 
-When I first tried to set this up, I did not include a normal (Gaussian) distribution model. Instead I said that the maximum amount of goals, assists and cards a player could get across the season was 100 of each. I wanted the league to be exciting and high scoring, so I also set up that the maximum amount of home and away goals in any one game could be 10.
+When I first tried to set this up I did not include a normal (Gaussian) distribution model. Instead I said that the maximum amount of goals, assists and cards a player could get across the season was 100 of each. I wanted the league to be exciting and high scoring, so I also set up that the maximum amount of home and away goals in any one game could be 10.
 
-Without the Gaussian distribution model, I had it set to be completely random, but when I imported this data and queried it I found that a large majority of players had maxxed out all of their stats with 100 goals, assists and cards, and no one had less than 50. The large amount of games and the cap on player stats meant many players were maxxing out and subsequent goals, assists etc were just being divided out amongst the remaining players.
+Without the Gaussian distribution model I had it set to be completely random, but when I imported this data and queried it I found that a large majority of players had maxxed out all of their stats with 100 goals, assists and cards, and no one had less than 50. The large amount of games and the cap on player stats meant many players were maxxing out, and subsequent goals, assists etc were just being divided out amongst the remaining players.
 
 Once I found out you could include a distribution model, the results became much more realistic. I set the mean number for each of the stats and below it I set the stddev value.
 
@@ -134,9 +138,7 @@ for team_id in range(1, 21):  # 20 teams
         "team_id": team_id,
         "team_name": faker.company() + " FC",
         "city": faker.city(),
-        "coach_name": faker.name(),
-         "points": 0,  # Initialize points,
-        "matches_played": 0  # Initialize matches played
+        "coach_name": faker.name()
     })
 ```
 The above code generated data for the teams table.
@@ -271,7 +273,7 @@ print("Data inserted successfully!")
 The final step was to take this data that we had generated and actually populate the MySQL database with it.
 
 # Querying the Data
-Now at last we had a full database, it was time to start querying the data. 20 teams. 38 games each. 760 total matches. Who knows what drama took place in the 2023/2024 ELFL season. Who would win the race for the golden boot, or the coveted playmaker trophy? Who would take the unfortunate title of being the most booked player? And ultimately, who would be living out every child's dream and lifting the ELFL trophy. Read on to find out.
+Now at last we had a full database, it was time to start querying the data. 20 teams. 38 games each. 760 total matches. Who knows what drama took place in the 2023/2024 ELFL season. Who would win the race for the golden boot, or the much coveted playmaker award? Who would take the unfortunate title of being the most booked player? And ultimately, who would be living out every child's dream and lifting the ELFL trophy high above their head? Read on to find out.
 
 ## ELFL Top Scorers 2023/2024
 ```
@@ -311,7 +313,7 @@ Modifying the goalscorers code just slightly allows us to see who our top assist
 
 ![Top Assists](Screenshots/Top-Assists.png)
 
-They say you really don't hit your playmaker peak until you hit your 50's and the 23/24 season refused to buck that trend with 3 of the top 4 in the assists charts aged between 50 and 60.
+They say you really don't hit your playmaker peak until you hit your 50's and the 23/24 season refused to buck that trend with 3 of the top 4 in the assists charts aged exactly 51.
 
 Ultimately this year's Playmaker award was shared between 2 of the league's finest. Mallory Grant had a stellar campaign for Dunn, Smith and Cunningham FC, and she was matched all the way by George Cole of Morris-Perez FC, with both recording 40 assists across the 38 games.
 
@@ -365,7 +367,6 @@ In order to find the top scoring teams I used the above code, joining teams, pla
 Perez must be a lucky name in the ELFL as our top 2 highest scoring teams both seem to have had a Perez as a partner in their firm.
 
 Morris-Perez FC, led by George Cole of course, top the chart with 228 goals across 38 games, for an average of 6 goals a game. Relentless stuff.
-
 
 ## Most Yellow Cards
 ```
@@ -428,7 +429,7 @@ where matches.match_id = 345;
 The match took place at Anachester, the home stadium of team 19, and saw them take on team 3. A quick 'SELECT * FROM teams' showed me that this game was between Vasquez Inc FC and Benson, Kauffman and Kim FC. This represented quite a departure from the norm for Benson, Kauffman and Kim FC, who as we saw earlier, were among the lowest scorers in the division.
 
 
-## Final League Table
+## Creating the Final League Table
 
 So now finally we come to the league table. It's been a remarkable season, but only 1 team can finish first and lift the trophy in front of their adoring fans. Who will finish with the ultimate bragging rights? Read on to find out.
 
@@ -479,9 +480,13 @@ For each match_id, the number of home goals was compared to the number of away g
 
 Finally I grouped this by team_id and ordered by wins to get the final results.
 
+## Final Results
+
 ![Final Results](Screenshots/Final-Results.png)
 
 This table gave me the total wins, draws and losses for each team. I then used this to calculate the points and put the result into the final polished table that you see below.
+
+## THE ELFL 23/24 Table
 
 ![Final Results](Screenshots/league-table.png)
 
@@ -501,7 +506,13 @@ Gonzalez, Nguyen and Welch FC finished 1 point ahead of Murphy-Frost FC to seal 
 
 Meanwhile it was relegation heartbreak for Coleman, Jarvis and Oconnor FC, Allen-Gonzalez FC, and Olsen-Graham FC, who will all be playing their football in the Law Firm Championship next season.
 
-![ELFL Season Review](Screenshots/ELFL-Season-Review-2.png)
+## THE ELFL 23/24 Season Review
+
+![ELFL Season Review](Screenshots/ELFL-Season-Review-3.png)
+
+The final part of this project was pulling all of this data together into something visually appealing. I used Canva to create the visuals seen here on the excel dashboard, inputting the data we have uncovered throughout this project.
+
+And a nice dashboard is no less than these players deserve as the ELFL serves up another classic season. There really is no league quite like it.
 
 
 
