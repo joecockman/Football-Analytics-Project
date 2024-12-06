@@ -402,12 +402,6 @@ The oppressive tactics employed by coach Whitney Delgado at Sullivan, Erickson a
 
 Jason Hall, Shannon Carter, Loretta Williams & Robert Shaw share top spot equally with 6 red cards each.
 
-## Total  Cards
-```
-ALTER TABLE stats
-ADD COLUMN total_cards INT GENERATED ALWAYS AS (yellow_cards + red_cards) STORED;
-```
-
 ## Game of the Season
 
 As the maximum amount of goals for each team in any one game was 10, I wanted to see if any of the 760 games across the season resulted in a 10-10 draw, the highest possible score. To accomplish this I used the below code, selecting the sum of the goals scored and grouping by the match_id.
@@ -418,6 +412,8 @@ group by match_id
 order by sum(goals_scored) desc;
 ```
 
+![Highest Scoring Games](Screenshots/Highest-Scoring-Games.png)
+
 The result showed me that just one game across the season has finished 10-10. Now that I knew the match_id was 345, I wrote the following code to see which teams were involved in this ELFL epic.
 
 ```
@@ -426,6 +422,8 @@ join scores
 on matches.match_id = scores.match_id
 where matches.match_id = 345;
 ```
+
+![10-10 Game](Screenshots/10-10.png)
 
 The match took place at Anachester, the home stadium of team 19, and saw them take on team 3. A quick 'SELECT * FROM teams' showed me that this game was between Vasquez Inc FC and Benson, Kauffman and Kim FC. This represented quite a departure from the norm for Benson, Kauffman and Kim FC, who as we saw earlier, were among the lowest scorers in the division.
 
@@ -480,6 +478,8 @@ I then had to define what a win, loss and draw were in this context. I did this 
 For each match_id, the number of home goals was compared to the number of away goals and a result was determined by using the CASE statement we set up. home_goals > away_goals = home win etc.
 
 Finally I grouped this by team_id and ordered by wins to get the final results.
+
+![Final Results](Screenshots/Final-Results.png)
 
 
 
